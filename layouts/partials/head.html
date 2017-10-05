@@ -1,0 +1,28 @@
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
+    <title>
+        {{ .Title }}
+    </title>
+    {{ with .Description }}
+    <meta content="{{ . }}" name="description"/>
+    {{ end }}
+    <meta content="{{ .Site.Author.name }}" name="author"/>
+    {{ .Hugo.Generator }}
+    {{ with .Site.Params.favicon }}
+    <link href="{{ $.Site.BaseURL }}/{{ . }}" rel="icon" type="image/x-icon"/>
+    {{ end }}
+
+    <link rel="alternate" href="{{ "/index.xml" | absURL }}" type="application/rss+xml" title="{{ .Site.Title }}"/>
+
+    <link href="{{ .Site.BaseURL }}/css/main.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" async="async"/>
+    <link href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/{mini-flavor}.css" rel="stylesheet" async="async" />
+
+    <!-- Facebook OpenGraph tags -->
+    <meta content="{{ .Title }}" property="og:title"/>
+    <meta content="website" property="og:type"/>
+    <meta content="{{ .URL }}" property="og:url"/>
+    <meta content="/{{ .Site.Params.logo }}" property="og:image"/>
+</head>
