@@ -3,25 +3,58 @@
     {{ partial "head.html" . }}
     <body>
         {{ partial "nav.html" . }}
-        <header class="header-section ">
-            <div class="intro-header no-img">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                            <div class="page-heading">
-                                <!-- <h1>{{.Site.Title}}</h1> -->
-                                {{if .Site.Params.subtitle}}
-                                <hr class="small">
-                                    <span class="page-subheading">
-                                        {{.Site.Params.subtitle}}
-                                    </span>
-                                    {{end}}
-                                </hr>
+
+        <div class="container main" role="main">
+            <div class="tile is-ancestor">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="posts-list">
+                        {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+                        {{ range $pag.Pages }}
+                        <article class="post-preview box is-black">
+                            <a href="{{ .Permalink }}">
+                            <h1 class="post-title">{{ .Title }}</h1>
+
+                            {{ if .Params.subtitle }}
+                            <h3 class="post-subtitle">
+                            {{ .Params.subtitle }}
+                            </h3>
+                            {{ end }}
+                            </a>
+
+                            <p class="post-meta">
+                                 Posted on {{ .Date.Format "January 2, 2006" }} | written by {{ .Site.Params.author }}
+                            </p>
+
+                            <div class="post-entry">
+                                <p>{{ .Summary }}</p>
+                                <a href="{{ .Permalink }}" class="post-read-more button is-primary">[READ&nbsp;MORE]</a>
                             </div>
-                        </div>
+
+                         </article>
+                        {{ end }}
                     </div>
+
+                    {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
+                        <ul class="pager main-pager">
+                            {{ if .Paginator.HasPrev }}
+                                <li class="previous">
+                                    <a href="{{ .URL }}page/{{ .Paginator.Prev.PageNumber }}">&larr; Newer Posts</a>
+                                </li>
+                            {{ end }}
+                            {{ if .Paginator.HasNext }}
+                                <li class="next">
+                                    <a href="{{ .URL }}page/{{ .Paginator.Next.PageNumber }}">Older Posts &rarr;</a>
+                                </li>
+                            {{ end }}
+                        </ul>
+                    {{ end }}
+                </div>
+                <div class="">
+
                 </div>
             </div>
-        </header>
+        </div>
+
+        {{ partial "footer.html" . }}
     </body>
 </html>

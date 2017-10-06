@@ -16,9 +16,11 @@
 
     <link rel="alternate" href="{{ "/index.xml" | absURL }}" type="application/rss+xml" title="{{ .Site.Title }}"/>
 
-    <link href="{{ .Site.BaseURL }}/css/main.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" async="async"/>
-    <link href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/{mini-flavor}.css" rel="stylesheet" async="async" />
+    <link href="{{ .Site.BaseURL }}/css/bulma.css" rel="stylesheet" async="async" />
+    <link href="{{ .Site.BaseURL }}/css/main.css" rel="stylesheet"/>
+
+    <script src="{{ .Site.BaseURL }}/js/main.js" async="async"></script>
 
     <!-- Facebook OpenGraph tags -->
     <meta content="{{ .Title }}" property="og:title"/>

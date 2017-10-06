@@ -1,0 +1,74 @@
+<div class="container single-post">
+    <section class="hero post-header is-dark">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title post-title">
+                    {{ .Title }}
+                </h1>
+                {{- if or (or (not .Lastmod.IsZero) (not .Date.IsZero)) .Params.categories -}}
+                    <p id="post-meta" class="row">
+                        {{- if .Params.categories -}}
+                            <div class="row-item">
+                                <span class="fa fa-folder"></span>
+                                {{ range $index, $category := .Params.categories }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "categories/" | absLangURL }}{{ $category | urlize | lower }}" rel="category">{{ . | title }}</a>{{ end }}
+                            </div>
+                        {{- end -}}
+                        {{- if .Params.tags -}}
+                            <div class="row-item">
+                                <span class="fa fa-folder"></span>
+                                {{ range $index, $category := .Params.tags }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "tags/" | absLangURL }}{{ $category | urlize | lower }}" rel="category">{{ . | title }}</a>{{ end }}
+                            </div>
+                        {{- end -}}
+                        {{- if not .Date.IsZero -}}
+                            <br/><div class="row-item">
+                                <span class="fa fa-clock-o"></span>
+                                {{ if not .Date.IsZero -}}
+                                <time datetime="{{ .Date.Format "2006-01-02" }}" content="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">Published: {{ .Date.Format "January 02, 2006" }}</time>
+                                {{- end -}}
+                            </div>
+                        {{- end -}}
+                        {{- if not .Lastmod.IsZero -}}
+                            <div class="row-item">
+                                <span class="fa fa-clock-o"></span>
+                                {{ if not .Lastmod.IsZero -}}
+                                    <time datetime="{{ .Lastmod.Format "2006-01-02" }}" content="{{ .Lastmod.Format "2006-01-02" }}" itemprop="dateModified">Last Updated: {{ .Lastmod.Format "January 02, 2006" }}</time>
+                                {{- end -}}
+                            </div>
+                        {{- end -}}
+                    </p>
+                {{- end -}}
+            </div>
+        </div>
+    </section>
+    <div class="row box">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="toc menu-list">
+                <b>Contents</b>
+                {{ .TableOfContents }}
+            </div>
+
+            <article role="main" class="post">
+                {{ .Content }}
+            </article>
+
+            <ul class="pager blog-pager">
+                {{ if .PrevInSection }}
+                    <li class="previous">
+                        <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; Previous Post</a>
+                    </li>
+                {{ end }}
+                {{ if .NextInSection }}
+                    <li class="next">
+                        <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">Next Post &rarr;</a>
+                    </li>
+                {{ end }}
+            </ul>
+
+            {{ if .Site.DisqusShortname }}
+                <div class="disqus-comments">
+                    {{ partial "disqus.html" . }}
+                </div>
+            {{ end }}
+        </div>
+    </div>
+</div>

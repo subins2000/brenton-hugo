@@ -1,45 +1,41 @@
-<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="main-navbar">
-            <ul class="nav navbar-nav navbar-right">
-            {{ range .Site.Menus.main.ByWeight }}
-                {{ if .HasChildren }}
-                    <li class="navlinks-container">
-                        <a class="navlinks-parent" href="javascript:void(0)">{{ .Name }}</a>
-                        <div class="navlinks-children">
-                        {{ range .Children }}
-                            <a href="{{ .URL }}">{{ .Name }}</a>
-                        {{ end }}
-                        </div>
-                    </li>
-                {{ else }}
-                    <li>
-                    <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
-                    </li>
-                {{ end }}
-            {{ end }}
-            </ul>
-        </div>
-
-    <div class="avatar-container">
+<nav class="navbar">
+    <div class="navbar-brand">
+        <button class="button navbar-burger" data-target="main-navbar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         {{ if isset .Site.Params "logo" }}
-                <div class="avatar-img-border">
-                    <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
-                            <img class="avatar-img" src="{{ .Site.BaseURL }}/{{ .Site.Params.logo }}" alt="{{ .Site.Title }}" />
-                    </a>
-                </div>
+            <div class="navbar-item">
+                <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
+                    <img class="avatar-img" src="{{ .Site.BaseURL }}/{{ .Site.Params.logo }}" alt="{{ .Site.Title }}" />
+                </a>
+            </div>
         {{ end }}
+        <a class="navbar-item site-title" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        {{if .Site.Params.subtitle}}
+            <span class="site-subheading">{{.Site.Params.subtitle}}</span>
+        {{end}}
     </div>
 
+    <div class="navbar-menu" id="main-navbar">
+        <div class="navbar-end">
+            {{ range .Site.Menus.main.ByWeight }}
+                {{ if .HasChildren }}
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">{{ .Name }}</a>
+                        <div class="navbar-dropdown is-boxed">
+                            {{ range .Children }}
+                                <a class="navbar-item" href="{{ .URL }}">{{ .Name }}</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ else }}
+                    <div class="navbar-item">
+                        <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
+                    </div>
+                {{ end }}
+            {{ end }}
+        </div>
     </div>
 </nav>
