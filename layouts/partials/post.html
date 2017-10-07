@@ -19,8 +19,11 @@
                                 {{ range $index, $category := .Params.tags }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "tags/" | absLangURL }}{{ $category | urlize | lower }}" rel="category">{{ . | title }}</a>{{ end }}
                             </div>
                         {{- end -}}
+                        {{- if or .Params.categories .Params.tags -}}
+                            <br/>
+                        {{- end -}}
                         {{- if not .Date.IsZero -}}
-                            <br/><div class="row-item">
+                            <div class="row-item">
                                 <span class="fa fa-clock-o"></span>
                                 {{ if not .Date.IsZero -}}
                                 <time datetime="{{ .Date.Format "2006-01-02" }}" content="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">Published: {{ .Date.Format "January 02, 2006" }}</time>
@@ -40,29 +43,22 @@
             </div>
         </div>
     </section>
-    <div class="row box">
+    <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="toc menu-list">
-                <b>Contents</b>
-                {{ .TableOfContents }}
+            <div class="box">
+                {{ if and (gt .WordCount 200 ) (ne .Params.toc "false") }}
+                    <div class="toc menu-list">
+                        <b>Table of Contents</b>
+                        {{ .TableOfContents }}
+                    </div>
+                {{ end }}
+
+                <article role="main" class="post">
+                    {{ .Content }}
+                </article>
             </div>
 
-            <article role="main" class="post">
-                {{ .Content }}
-            </article>
-
-            <ul class="pager blog-pager">
-                {{ if .PrevInSection }}
-                    <li class="previous">
-                        <a href="{{ .PrevInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title }}">&larr; Previous Post</a>
-                    </li>
-                {{ end }}
-                {{ if .NextInSection }}
-                    <li class="next">
-                        <a href="{{ .NextInSection.Permalink }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title }}">Next Post &rarr;</a>
-                    </li>
-                {{ end }}
-            </ul>
+            {{ partial "pagination.html" . }}
 
             {{ if .Site.DisqusShortname }}
                 <div class="disqus-comments">

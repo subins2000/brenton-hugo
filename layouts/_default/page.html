@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     {{ partial "head.html" . }}
     <body>
         {{ partial "nav.html" . }}
@@ -7,7 +7,7 @@
             {{ if eq .Type "post" }}
                 {{ partial "post.html" . }}
             {{ else if eq .Type "page" }}
-                {{ partial "post.html" . }}
+                {{ partial "page.html" . }}
             {{ else }}
                 <div class="container" role="main">
                     NO MATCHING PARTIAL
