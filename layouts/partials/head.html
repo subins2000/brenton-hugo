@@ -2,31 +2,39 @@
     <meta charset="utf-8"/>
     <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
-    <title>{{ .Title }}</title>
 
+    {{ if and (not .IsHome) (.Site.Params.appendInTitle) }}
+        <title>{{ $.Title }}{{ .Site.Params.appendInTitle }}</title>
+    {{ else }}
+        <title>{{ .Title }}</title>
+    {{ end }}
     {{ if .IsHome }}
-        {{ with .Description }}
-            <meta content="{{ . }}" name="description"/>
-        {{ end }}
+        <meta content="{{ .Site.Params.description }}" name="description"/>
+    {{ else if (.Description) }}
+        <meta content="{{ .Description }}" name="description"/>
     {{ end }}
 
     <meta content="{{ .Site.Params.author }}" name="author"/>
     {{ .Hugo.Generator }}
     {{ with .Site.Params.favicon }}
-    <link href="{{ $.Site.BaseURL }}/{{ . }}" rel="icon" type="image/x-icon"/>
+        <link href="{{ .Site.BaseURL }}/{{ . }}" rel="icon" type="image/x-icon"/>
     {{ end }}
 
     <link rel="alternate" href="{{ "/index.xml" | absURL }}" type="application/rss+xml" title="{{ .Site.Title }}"/>
 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" async="async"/>
-    <link href="{{ $.Site.BaseURL }}/css/bulma.css" rel="stylesheet" async="async" />
-    <link href="{{ $.Site.BaseURL }}/css/main.css" rel="stylesheet"/>
+    <link href="{{ .Site.BaseURL }}/css/bulma.css" rel="stylesheet" async="async" />
+    <link href="{{ .Site.BaseURL }}/css/main.css" rel="stylesheet"/>
 
-    <script src="{{ $.Site.BaseURL }}/js/main.js" async="async"></script>
+    <script src="{{ .Site.BaseURL }}/js/main.js" async="async"></script>
 
     <!-- Facebook OpenGraph tags -->
     <meta content="{{ .Title }}" property="og:title"/>
     <meta content="website" property="og:type"/>
     <meta content="{{ .URL }}" property="og:url"/>
     <meta content="/{{ .Site.Params.logo }}" property="og:image"/>
+
+    {{ range .Site.Params.customCSS -}}
+        <link rel="stylesheet" href="{{ . | absURL }}" async="async" />
+    {{- end }}
 </head>

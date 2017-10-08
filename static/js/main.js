@@ -22,4 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    var elems = document.querySelectorAll('.post pre');
+    for (var i = 0; i < elems.length; i++) {
+        elems[i].classList.add('prettyprint');
+    }
 });
