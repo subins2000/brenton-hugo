@@ -58,13 +58,9 @@
                 </article>
             </div>
 
-            {{ partial "pagination.html" . }}
+            {{ partial "pagination-post.html" . }}
 
-            {{ if .Site.DisqusShortname }}
-                <div class="disqus-comments">
-                    {{ partial "disqus.html" . }}
-                </div>
-            {{ end }}
+            {{ partial "disqus.html" . }}
         </div>
     </div>
 </div>

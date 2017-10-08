@@ -1,11 +1,9 @@
 <article class="post-preview box is-black">
     <a href="{{ .Permalink }}">
-    <h1 class="post-title">{{ .Title }}</h1>
+    <h4 class="post-title subtitle is-4">{{ .Title }}</h4>
 
     {{ if .Params.subtitle }}
-    <h3 class="post-subtitle">
-    {{ .Params.subtitle }}
-    </h3>
+        <h5 class="post-subtitle subtitle is-5">{{ .Params.subtitle }}</h5>
     {{ end }}
     </a>
 

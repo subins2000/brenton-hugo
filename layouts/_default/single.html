@@ -9,10 +9,8 @@
             {{ else if eq .Type "page" }}
                 {{ partial "post.html" . }}
             {{ else }}
-                <div class="container" role="main">
-                    NO MATCHING PARTIAL
-                    {{.Content}}
-                </div>
+                NO MATCHING PARTIAL
+                {{.Content}}
             {{ end }}
         </div>
         {{ partial "footer.html" . }}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    {{ partial "head.html" (dict "Title" (lower .Title)) }}
+    {{ partial "head.html" (dict "Title" .Title) }}
     <body>
         {{ partial "nav.html" . }}
         <div class="container main" role="main">

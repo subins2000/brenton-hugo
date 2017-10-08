@@ -4,9 +4,9 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport"/>
     <title>{{ .Title }}</title>
 
-    {{ if .isHome }}
+    {{ if .IsHome }}
         {{ with .Description }}
-        <meta content="{{ . }}" name="description"/>
+            <meta content="{{ . }}" name="description"/>
         {{ end }}
     {{ end }}
 

@@ -5,21 +5,14 @@
         {{ partial "nav.html" . }}
 
         <div class="container main" role="main">
-            <div class="tile is-ancestor">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="posts-list">
-                        {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
-                        {{ range $pag.Pages }}
-                        {{ partial "post-preview.html" . }}
-                        {{ end }}
-                    </div>
-
-                    {{ partial "pagination.html" . }}
-                </div>
-                <div class="">
-
-                </div>
+            <div class="posts-list">
+                {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+                {{ range $pag.Pages }}
+                {{ partial "post-preview.html" . }}
+                {{ end }}
             </div>
+
+            {{ partial "pagination.html" . }}
         </div>
 
         {{ partial "footer.html" . }}
