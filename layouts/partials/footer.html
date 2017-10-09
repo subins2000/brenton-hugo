@@ -30,8 +30,11 @@
         </p>
         <p>Servers are costly ! Please be <b>generous</b> to consider a <u><a href="/donate">donation</a></u> if you found something helpful.</p>
         <div class="smilie" title="Do you know that this is just a text transformed into a smiley face by CSS ? Check the source !">:-)</div>
-        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
     </div><!-- .site-info -->
 </footer><!-- #colophon -->
 <script type="text/javascript" src="//cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=perl&skin=sunburst&autoload=true" async="async"></script>
+{{ if .Site.Params.shareButtons }}
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4fb122922591215b" async="async"></script>
+{{ end }}
 {{ template "_internal/google_analytics.html" . }}

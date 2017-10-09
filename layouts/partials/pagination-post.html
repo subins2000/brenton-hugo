@@ -1,4 +1,5 @@
 <nav class="pagination is-centered is-large box" id="site-navigation" role="navigation" aria-label="pagination">
     <a class="pagination-previous" {{ if .PrevInSection }} href="{{ .PrevInSection.Permalink }}" title="{{ .PrevInSection.Title }}" {{ else }}disabled{{ end }}>Previous Post</a>
+    <div class="addthis_inline_share_toolbox"></div>
     <a class="pagination-next" {{ if .NextInSection }} href="{{ .NextInSection.Permalink }}" {{ else }}disabled{{ end }}>Next Post</a>
 </nav>
