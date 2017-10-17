@@ -54,23 +54,27 @@ html, body
         margin: 0 0 1em
 
 .post
+    p
+        margin-top: 20px
     ul
         list-style-type: disc
         margin: auto
         padding: 0 40px
-    p
-        margin-top: 20px
     blockquote, pre
         word-wrap: normal
         overflow-x: auto
         width: auto !important
-        white-space: pre !important
-        margin: 20px 15px 16px
+        margin: 15px 20px
         padding: 5px 15px
         border: none
+    blockquote, pre, li
+        p
+            margin: 0
     table
         width: 100%
         border-top: 2px solid $primary
+        border-bottom: 2px solid $primary
+        margin: 10px auto
     table td
         border: 1px solid #dbdbdb
         border-width: 0 0 1px
