@@ -5,14 +5,20 @@
         {{ partial "nav.html" . }}
 
         <div class="container main" role="main">
-            <div class="posts-list">
-                {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
-                {{ range $pag.Pages }}
-                {{ partial "post-preview.html" . }}
-                {{ end }}
-            </div>
+            <div class="columns">
+                <div id="primary" class="is-three-quarters">
+                    <div class="posts-list">
+                        {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+                        {{ range $pag.Pages }}
+                        {{ partial "post-preview.html" . }}
+                        {{ end }}
+                    </div>
 
-            {{ partial "pagination.html" . }}
+                    {{ partial "pagination.html" . }}
+                </div>
+
+                {{ partial "sidebar.html" . }}
+            </div>
         </div>
 
         {{ partial "footer.html" . }}
