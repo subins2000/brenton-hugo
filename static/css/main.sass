@@ -1,14 +1,26 @@
 @import '../../variables.sass'
 
 html, body
-    background: #000
+    background: linear-gradient( 0deg,#4CA454,#000 )
 
 .main
-    padding-top: 40px
+    padding: 80px 40px 0
+    background: #ddd
 
+.navbar
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15)
 
 #site-navigation
     margin: 40px 0
+
+#secondary
+    padding-top: 0
+
+.box
+    background: #fff
+    color: #000
+    box-shadow: 0 0 10px rgba(0,0,0,0.15)
+    border-radius: 0
 
 .post-preview
     .post-title
@@ -46,13 +58,17 @@ html, body
         font-size: 95%
 
         li ul
-            border-left: 1px solid #dbdbdb
+            border-left: none
             margin: 0 0.75em
             list-style-type: decimal
+
+        ul
+            line-height: 0.5
 
     .post-title
         font-size: 3rem
         margin: 0 0 1em
+        color: #000
 
 .post
     p
