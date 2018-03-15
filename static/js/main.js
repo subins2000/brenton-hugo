@@ -26,4 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
     for (var i = 0; i < elems.length; i++) {
         elems[i].classList.add('prettyprint');
     }
+
+    document.getElementById('search-toggle').onclick = function() {
+        var sb = document.getElementById('search-box');
+        if (sb.style.display === 'block'){
+            sb.style.display = 'none';
+            sb.style.right = window.innerWidth + 'px';
+        } else {
+            sb.style.display = 'block';
+            sb.style.right = 0;
+        }
+    };
 });
