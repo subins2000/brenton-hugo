@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             sb.style.display = 'block';
             sb.style.right = 0;
+
+            document.getElementById('search-input').focus();
         }
     };
 });
