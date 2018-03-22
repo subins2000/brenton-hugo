@@ -3,15 +3,81 @@
 html, body
     background: linear-gradient( 0deg,#4CA454,#000 )
 
+.content-box
+    padding: 60px 60px
+
 .main
-    padding: 80px 40px 0
     background: #ddd
 
 .navbar
     box-shadow: 0 10px 20px rgba(0,0,0,0.15)
 
-#site-navigation
-    margin: 40px 0
+#secondary-nav
+    margin: 100px auto 0
+
+#secondary-nav *
+    -webkit-transition: all 0.5s ease
+    transition: all 0.5s ease
+
+#secondary-nav .columns
+    margin: 0
+
+#secondary-nav li
+    height: 50px
+    text-align: center
+
+#secondary-nav li a
+    height: 100%
+    width: 100%
+    color: #fff
+    font-weight: bold
+
+#secondary-nav li a:hover
+    color: #000
+
+#secondary-nav li:nth-child(1)
+    width: 50px
+
+#secondary-nav li:nth-child(1)
+    background: #4CA454
+
+#secondary-nav li:nth-child(2)
+    background: #6693D6
+
+#secondary-nav li:nth-child(3)
+    background: #BE4C39
+
+#secondary-nav li:nth-child(4)
+    background: #d49b00
+
+#secondary-nav li:nth-child(5)
+    background: #9351A6
+
+#secondary-nav li:nth-child(6)
+    background: #E18728
+
+/**
+ * Search box
+ */
+#search-toggle
+    height: 100%
+    width: 100%
+    padding: .75rem
+
+#search-box-wrapper
+    position: relative
+
+#search-box
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 50px
+    right: 0
+    visibility: hidden
+
+#search-input
+    height: 100%
+    width: 100%
 
 #secondary
     padding-top: 0
@@ -19,8 +85,6 @@ html, body
 .box
     background: #fff
     color: #000
-    box-shadow: 0 0 10px rgba(0,0,0,0.15)
-    border-radius: 0
 
 .post-preview
     .post-title
@@ -107,7 +171,7 @@ html, body
 
 .site-footer
     width: 100%
-    margin: 20px 0px 0px
+    margin: 40px 0px 0px
     padding: 10px 0
     font-size: 1em
     color: white
@@ -185,5 +249,5 @@ $tablet-width: 768px
 $desktop-width: 1024px
 
 @media (max-width: $tablet-width)
-    .main
-        padding: 80px 0 0
+    .content-box
+        padding: 20px 0 0
