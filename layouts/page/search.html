@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    {{ partial "head.html" . }}
+    <body>
+        {{ partial "nav.html" . }}
+
+        <div class="container main" role="main">
+            <div class="single-post">
+            <section class="hero post-header is-light">
+                <div class="hero-body">
+                    <div>
+                        <h1 class="title post-title">
+                            Search
+                        </h1>
+                    </div>
+                </div>
+            </section>
+            <script>
+                (function() {
+                    var cx = {{ .Site.Params.googleCSE }};
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                })();
+            </script>
+            <gcse:search></gcse:search>
+        </div>
+        </div>
+
+        {{ partial "footer.html" . }}
+    </body>
+</html>
