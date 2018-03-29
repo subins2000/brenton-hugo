@@ -3,23 +3,33 @@
     {{ partial "head.html" (dict "Title" .Title) }}
     <body>
         {{ partial "nav.html" . }}
-        <div class="container main" role="main">
-            {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
-            {{ range $pag.Pages }}
-                {{ if eq .Type "post" }}
-                    {{ partial "post-preview.html" . }}
-                {{ else if eq .Type "page" }}
-                    {{ partial "post-preview.html" . }}
-                {{ else }}
-                    <div class="container" role="main">
-                        NO MATCHING PARTIAL
-                        {{.Content}}
-                    </div>
-                {{ end }}
-            {{ end }}
+        {{ partial "nav-secondary.html" . }}
 
-            {{ partial "pagination.html" . }}
+        <div class="container content-box main" role="main">
+            <div class="columns">
+                <div id="primary" class="is-three-quarters">
+                    <p class="box">Browsing {{ .Title }}</p>
+                    <div class="posts-list">
+                        {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+                        {{ range $pag.Pages }}
+                            {{ if eq .Type "post" }}
+                                {{ partial "post-preview.html" . }}
+                            {{ else if eq .Type "page" }}
+                                {{ partial "post-preview.html" . }}
+                            {{ else }}
+                                NO MATCHING PARTIAL
+                                {{.Content}}
+                            {{ end }}
+                        {{ end }}
+                    </div>
+
+                    {{ partial "pagination.html" . }}
+                </div>
+
+                {{ partial "sidebar.html" . }}
+            </div>
         </div>
+
         {{ partial "footer.html" . }}
     </body>
 </html>
