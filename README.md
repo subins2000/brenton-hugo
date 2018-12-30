@@ -17,3 +17,5 @@ To compile CSS automatically when SASS files are changed, run this :
 ```bash
 while inotifywait -e close_write static/css/; do bash ./build.sh; done
 ```
+
+`inotify-tools` package is required for this (`sudo apt install inotify-tools`)
