@@ -6,6 +6,14 @@ This theme is made for [my blog](https://subinsb.com).
 
 ## Development
 
+### Requirements
+
+* [SASS](https://sass-lang.com/install)
+
+### Editing
+
+SASS files are in `static/css`
+
 To compile SASS to CSS, run :
 
 ```bash
