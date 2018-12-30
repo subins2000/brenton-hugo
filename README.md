@@ -9,6 +9,9 @@ This theme is made for [my blog](https://subinsb.com).
 ### Requirements
 
 * [SASS](https://sass-lang.com/install)
+* Bulma
+
+Do a `npm install` to install the dependencies
 
 ### Editing
 

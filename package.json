@@ -1,0 +1,27 @@
+{
+  "name": "brenton",
+  "version": "1.0.0",
+  "description": "Brenton theme for hugo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subins2000/brenton-hugo.git"
+  },
+  "keywords": [
+    "theme",
+    "hugo"
+  ],
+  "author": "Subin Siby",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/subins2000/brenton-hugo/issues"
+  },
+  "homepage": "https://github.com/subins2000/brenton-hugo#readme",
+  "dependencies": {
+    "bulma": "^0.7.2",
+    "sass": "^1.15.2"
+  }
+}
