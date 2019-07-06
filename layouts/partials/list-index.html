@@ -1,0 +1,20 @@
+{{ $type := .Type }}
+{{ $urlPrefix := print $type "/" }}
+
+{{ $taxonomies := .Site.Taxonomies.tags }}
+
+{{ if eq $type "categories" }}
+    {{ $taxonomies = .Site.Taxonomies.categories }}
+{{ end }}
+<ul>
+    {{ range $key, $value := $taxonomies }}
+        <a href="{{ $urlPrefix | absLangURL }}{{ $key | urlize | lower }}"><li>{{ $key }}</li></a>
+        <ul>
+            {{ range $value.Pages }}
+                <li hugo-nav="{{ .RelPermalink}}">
+                    <a href="{{ .Permalink}}">{{ .LinkTitle }}</a>
+                </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+</ul> 

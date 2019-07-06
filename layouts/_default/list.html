@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    {{ partial "head.html" . }}
+    <body>
+        {{ partial "nav.html" . }}
+        {{ partial "nav-secondary.html" . }}
+
+        <div class="container content-box main" role="main">
+            <div class="columns">
+                <div id="primary" class="is-three-quarters">
+                    {{ if isset .Data "Index" }}
+                        <div class="box post">
+                            {{ partial "list-index.html" . }}
+                        </div>
+                    {{ else }}
+                        <p class="box">Posts marked with "<b>{{ .Title }}</b>" in <a href="{{ print .Type | absURL }}">{{ .Type }}</a></p>
+                        {{ partial "list-items.html" . }}
+
+                        {{ partial "pagination.html" . }}
+                    {{ end }}
+                </div>
+
+                {{ partial "sidebar.html" . }}
+            </div>
+        </div>
+
+        {{ partial "footer.html" . }}
+    </body>
+</html>
