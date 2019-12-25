@@ -12,8 +12,117 @@ html, body
 .navbar
     box-shadow: 0 10px 20px rgba(0,0,0,0.15)
 
-#secondary-nav
-    margin: 100px auto 0
+.site-header
+  padding: 30px 0 30px
+
+  .site-title
+    display: inline-block
+    font-weight: 500
+    font-style: normal
+    font-size: 5.5rem
+    line-height: 0.8
+
+    a
+      color: #fff !important
+
+  #search-form
+    display: table
+    margin-top: 5px
+    color: #fff
+
+    .search-field
+      position: relative
+      top: -2px
+      width: 333px
+      padding: 3px 6px
+      border: 0
+      border-bottom: 2px solid #737373
+      -webkit-box-shadow: none
+      box-shadow: none
+      border-radius: 0
+      vertical-align: bottom
+      color: #fff
+      background: none
+
+      &:focus
+        border-bottom: 2px solid #6693D6
+
+#search-form:target .search-field
+  border-bottom: 2px solid #6693D6
+
+.site-header
+  #search-form
+    .shape-search
+      width: 30px
+      height: 30px
+      fill: #737373
+      vertical-align: bottom
+
+    &:hover .shape-search, &:target .shape-search
+      fill: #6693D6
+
+  .description
+    font-size: 15px
+    text-align: center
+    margin-top: 5px
+
+#site-navigation
+    font-size: 0
+    position: relative
+    display: table
+    table-layout: fixed
+    width: 100%
+
+    li
+        position: relative
+        font-weight: 500
+        font-style: normal
+        font-size: 1.2rem
+        text-transform: uppercase
+        padding: 10px 0
+        color: #fff
+        cursor: default
+
+.nav-item
+    display: table-cell
+    border-bottom: 0
+
+    &:hover .nav-submenu
+        z-index: 2
+        opacity: 1
+
+    &:nth-child(1), &:nth-child(1) .nav-submenu
+        background: #4CA454
+
+    &:nth-child(2), &:nth-child(2) .nav-submenu
+          background: #6693D6
+
+    &:nth-child(3), &:nth-child(3) .nav-submenu
+          background: #BE4C39
+
+    &:nth-child(4), &:nth-child(4) .nav-submenu
+          background: #9351A6
+
+    &:nth-child(5), &:nth-child(5) .nav-submenu
+          background: #d49b00
+
+    a
+        position: static
+        font-weight: 700
+        display: block
+        text-align: center
+        text-shadow: 0 0 7px rgba(0, 0, 0, 0.4)
+        color: #fff !important
+
+.nav-submenu
+    position: absolute
+    background: #fff
+    top: 42px
+    left: 0
+    z-index: -2
+    width: 100%
+    opacity: 0
+    transition: 0.7s
 
 #secondary-nav *
     -webkit-transition: all 0.5s ease

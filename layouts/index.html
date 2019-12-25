@@ -9,7 +9,7 @@
             <div class="columns">
                 <div id="primary" class="is-three-quarters">
                     <div class="posts-list">
-                        {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+                        {{ $pag := .Paginate (where .Site.RegularPages "Type" "post") }}
                         {{ range $pag.Pages }}
                         {{ partial "post-preview.html" . }}
                         {{ end }}
