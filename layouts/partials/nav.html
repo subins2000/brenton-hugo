@@ -15,8 +15,8 @@
             {{ end }}
         </div>
         <div id="search-box">
-            <svg viewBox="0 0 100 100" id="search-toggle">
-            <use xlink:href="#shape-search"></use>
+            <svg viewBox="0 0 100 100" id="search-toggle" style="display: inline-block;fill: #fff;vertical-align: middle;width: 30px;height: 30px;">
+                <use xlink:href="#shape-search"></use>
             </svg>
             <form id="search-form" action="/web/20161127154100/http://subinsb.com/">
                 <input type="search" name="s" class="search-field" value="">
@@ -29,18 +29,26 @@
             {{ range .Site.Menus.main.ByWeight }}
                 {{ if .HasChildren }}
                     <li class="nav-item">
-                        <a class="" href="{{ .URL }}">{{ .Name }}</a>
+                        {{ if .URL }}
+                            <a href="{{ .URL }}">{{ .Name }}</a>
+                        {{ else }}
+                            <a title="{{ .Name }}">{{ .Name }}</a>
+                        {{ end }}
                         <ul class="nav-submenu">
                             {{ range .Children }}
                                 <li class="nav-subitem">
-                                    <a class="" href="{{ .URL }}">{{ .Name }}</a>
+                                    <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
                                 </li>
                             {{ end }}
                         </ul>
                     </li>
                 {{ else }}
                     <li class="nav-item">
-                        <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
+                        {{ if .URL }}
+                            <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
+                        {{ else }}
+                            <a title="{{ .Name }}">{{ .Name }}</a>
+                        {{ end }}
                     </li>
                 {{ end }}
             {{ end }}

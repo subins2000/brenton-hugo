@@ -1,18 +1,21 @@
 <article class="post-preview box is-black">
-    <a href="{{ .Permalink }}">
-    <h4 class="post-title subtitle is-4">{{ .Title }}</h4>
+    <h3 class="post-title subtitle is-3"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
 
     {{ if .Params.subtitle }}
-        <h5 class="post-subtitle subtitle is-5">{{ .Params.subtitle }}</h5>
+        <h5 class="post-subtitle subtitle is-4">{{ .Params.subtitle }}</h5>
     {{ end }}
-    </a>
 
     <p class="post-meta">
-       Posted on {{ .Date.Format "January 2, 2006" }} | written by {{ .Site.Params.author }}
+        <span class="post-nav-item">{{ .Date.Format "January 2, 2006" }}</span>
+
+        {{- if .Params.categories -}}
+            <span class="post-nav-item">
+                {{ range $index, $category := .Params.categories }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "categories/" | absLangURL }}{{ $category | urlize | lower }}" rel="category">{{ . | title }}</a>{{ end }}
+            </span>
+        {{- end -}}
     </p>
 
     <div class="post-entry">
-        <p>{{ .Summary }}</p>
-        <a href="{{ .Permalink }}" class="post-read-more button is-primary">[READ&nbsp;MORE]</a>
+        <p>{{ .Summary }}... <a href="{{ .Permalink }}" class="post-read-more">[READ&nbsp;MORE]</a></p>
     </div>
 </article>
