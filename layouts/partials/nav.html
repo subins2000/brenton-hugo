@@ -1,24 +1,4 @@
 <div class="container">
-    <div class="navbar-menu" id="main-navbar">
-        <div class="navbar-end">
-            {{ range .Site.Menus.main.ByWeight }}
-                {{ if .HasChildren }}
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="{{ .URL }}">{{ .Name }}</a>
-                        <div class="navbar-dropdown is-boxed">
-                            {{ range .Children }}
-                                <a class="navbar-item" href="{{ .URL }}">{{ .Name }}</a>
-                            {{ end }}
-                        </div>
-                    </div>
-                {{ else }}
-                    <div class="navbar-item">
-                        <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
-                    </div>
-                {{ end }}
-            {{ end }}
-        </div>
-    </div>
     <div class="content-wrapper site-header">
         <div class="site-branding">
             {{ if isset .Site.Params "logo" }}
@@ -31,7 +11,7 @@
                 </div>
             {{ end }}
             {{ if .Site.Params.subtitle }}
-                <p class="site-description">{{ .Site.Params.subtitle }}</p>
+                <p class="site-subtitle">{{ .Site.Params.subtitle }}</p>
             {{ end }}
         </div>
         <div id="search-box">
