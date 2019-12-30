@@ -1,0 +1,4 @@
+{{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+{{ range $pag.Pages }}
+    {{ partial "post-preview.html" . }}
+{{ end }}

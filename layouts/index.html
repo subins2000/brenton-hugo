@@ -7,9 +7,9 @@
 
         <div class="container content-box main" role="main">
             <div class="columns">
-                <div id="primary" class="is-three-quarters">
+                <div id="primary" class="column is-two-thirds">
                     <div class="posts-list">
-                        {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+                        {{ $pag := .Paginate (where .Site.RegularPages "Type" "post") }}
                         {{ range $pag.Pages }}
                         {{ partial "post-preview.html" . }}
                         {{ end }}
