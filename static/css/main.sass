@@ -211,8 +211,8 @@ a[href]:hover
             margin: 0 0.75em
             list-style-type: decimal
 
-        ul
-            line-height: 0.5
+        a
+            padding: 3px 0
 
     .post-title
         font-size: 3rem
@@ -290,10 +290,12 @@ footer
     .side
         display: inline-block
         vertical-align: top
-        margin-right: 20px
         text-align: left
         &:nth-child(1)
             padding-right: 60px
+        &:nth-child(2)
+            text-align: right
+
     .site-info
         position: relative
         margin: 0px 40px -10px
@@ -351,6 +353,9 @@ $desktop-width: 1024px
     .content-box
         padding: 20px 0 0
 
+    .box
+        padding: 20px 5px
+
     .site-branding
         margin: 0 40px
 
@@ -373,3 +378,11 @@ $desktop-width: 1024px
 
         &:nth-child(5)
             width: 100%
+
+    footer .side:nth-child(1)
+        padding-right: 20px
+
+@media (max-width: $mobile-width)
+    footer .side
+        display: block
+        padding: 0 !important
