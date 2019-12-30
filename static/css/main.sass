@@ -347,7 +347,11 @@ footer
 
 $mobile-width: 400px
 $tablet-width: 768px
-$desktop-width: 1024px
+$desktop-width: 1088px
+
+@media (max-width: $desktop-width)
+    .site-header
+        padding: 40px
 
 @media (max-width: $tablet-width)
     .content-box
@@ -362,12 +366,15 @@ $desktop-width: 1024px
     .site-header
         text-align: center
 
+    .site-title
+        padding: 0 0 0.3em 0
+
     #search-box
         float: none
         margin: 20px 0
 
     #search-box input
-        width: 80vw
+        width: auto
 
     #site-navigation
         margin: 0
