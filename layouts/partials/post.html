@@ -39,10 +39,12 @@
                             </div>
                         {{- end -}}
                         <div class="row-item">
-                            Read <span id="sanders-page-counter">0</span> times since 2019 August
+                            Read <span id="sanders-page-counter">{count}</span> times since 2020
                         </div>
                         <div class="row-item">
-                            <a href="{{ .Permalink }}#disqus_thread"></a>
+                            <a href="#comments">
+                                <span class="disqus-comment-count" data-disqus-url="{{ .Permalink }}"></span>
+                            </a>
                         </div>
                     </p>
                 {{- end -}}
