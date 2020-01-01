@@ -2,102 +2,187 @@
 
 html, body
     background: #000
+    color: #fff
+    font-family: Ubuntu, Manjari
+
+a[href]:hover
+    border-bottom: 2px solid #999
 
 .content-box
-    padding: 60px 60px
+    padding: 60px 40px
 
 .main
-    background: #ddd
+    background: #eee
 
 .navbar
     box-shadow: 0 10px 20px rgba(0,0,0,0.15)
 
-#secondary-nav
-    margin: 100px auto 0
+.site-header
+    padding: 30px 0 30px
 
-#secondary-nav *
-    -webkit-transition: all 0.5s ease
-    transition: all 0.5s ease
-
-#secondary-nav .columns
+.site-title
+    display: inline-block
+    font-weight: 500
+    font-size: 3rem
     margin: 0
+    padding: 0.5em 0
 
-#secondary-nav li
-    height: 50px
+    a
+        color: #fff !important
+
+.site-subtitle
     text-align: center
+    margin-top: 5px
 
-#secondary-nav li a
-    height: 100%
-    width: 100%
-    color: #fff
-    font-weight: bold
-
-#secondary-nav li a:hover
-    color: #000
-
-#secondary-nav li:nth-child(1)
-    width: 50px
-
-#secondary-nav li:nth-child(1)
-    background: #4CA454
-
-#secondary-nav li:nth-child(2)
-    background: #6693D6
-
-#secondary-nav li:nth-child(3)
-    background: #BE4C39
-
-#secondary-nav li:nth-child(4)
-    background: #d49b00
-
-#secondary-nav li:nth-child(5)
-    background: #9351A6
-
-#secondary-nav li:nth-child(6)
-    background: #E18728
-
-/**
- * Search box
- */
-#search-toggle
-    height: 100%
-    width: 100%
-    padding: .75rem
-
-#search-box-wrapper
-    position: relative
+.site-branding
+    display: inline-block
 
 #search-box
-    position: absolute
-    top: 0
-    bottom: 0
-    left: 50px
-    right: 0
-    visibility: hidden
+    float: right
+    margin: 70px 0 0
 
-#search-input
-    height: 100%
+#search-form
+    display: inline-block
+
+    &.active
+        opacity: 1
+
+    button
+        display: none
+
+    input
+        padding: 3px 6px
+        width: 300px
+        border: 0
+        border-bottom: 2px solid #737373
+        -webkit-box-shadow: none
+        box-shadow: none
+        border-radius: 0
+        vertical-align: middle
+        color: white
+        background: none
+        outline: none
+
+    &:hover .shape-search, &:target .shape-search
+        fill: #6693D6
+
+#search-box
+    &:hover #search-toggle
+      fill: #4CA454
+
+    input:focus
+        #search-toggle
+            fill: #4CA454
+
+        border-bottom-color: #4CA454
+
+    &:target #search-box input
+        border-bottom-color: #4CA454
+
+.shape-search
+    width: 30px
+    height: 30px
+    fill: #737373
+    vertical-align: bottom
+
+#site-navigation
+    font-size: 0
+    position: relative
+    display: table
+    table-layout: fixed
     width: 100%
+    margin: 30px 0 0
 
-#secondary
+    li
+        position: relative
+        font-weight: 500
+        font-style: normal
+        font-size: 1.2rem
+        text-transform: uppercase
+        padding: 15px 0
+        color: #fff
+        cursor: default
+
+    a
+        border-bottom: 0
+
+    *
+        -webkit-transition: all 0.5s ease
+        transition: all 0.5s ease
+
+.nav-item
+    display: table-cell
+    border-bottom: 0
+
+    &:hover .nav-submenu
+        z-index: 2
+        opacity: 1
+
+    &:nth-child(1), &:nth-child(1) .nav-submenu
+        background: #4CA454
+
+    &:nth-child(2), &:nth-child(2) .nav-submenu
+          background: #BE4C39
+
+    &:nth-child(3), &:nth-child(3) .nav-submenu
+          background: #d49b00
+
+    &:nth-child(4), &:nth-child(4) .nav-submenu
+          background: #6693D6
+
+    &:nth-child(5), &:nth-child(5) .nav-submenu
+          background: #9351A6
+
+    a
+        position: static
+        font-weight: 700
+        display: block
+        text-align: center
+        text-shadow: 0 0 7px rgba(0, 0, 0, 0.4)
+        color: #fff !important
+
+.nav-submenu
+    position: absolute
+    background: #fff
+    top: 100%
+    left: 0
+    z-index: -2
+    width: 100%
+    opacity: 0
+
+#primary, #secondary
     padding-top: 0
+
+#primary
+    padding-right: 30px
 
 .box
     background: #fff
     color: #000
+    box-shadow: 0 0 10px rgba(0,0,0,0.15)
+    padding: 40px
+    border-radius: 0
+
+.widget:nth-child(1)
+    background: repeating-linear-gradient( 45deg,#DDD, #DDD 10px,#FFFFFF 10px, #FFFFFF 20px )
 
 .post-preview
     .post-title
-        margin: 0 0 10px
-    .post-entry, .post-read-more
+        margin: 0 0 1rem 0
+    .post-entry
         margin-top: 20px
+        font-size: 15px
+        line-height: 1.7
 
 .single-post .post-header
     text-align: center
 
 .post-meta
     color: #000
-    font-size: 80%
+    font-size: 0.9rem
+
+.post-nav-item
+    margin-right: 20px
 
 .single-post
     h1, h2, h3, h4, h5, h6
@@ -126,8 +211,8 @@ html, body
             margin: 0 0.75em
             list-style-type: decimal
 
-        ul
-            line-height: 0.5
+        a
+            padding: 3px 0
 
     .post-title
         font-size: 3rem
@@ -135,8 +220,10 @@ html, body
         color: #000
 
 .post
+    font-size: 1.1rem
+
     p
-        margin: 13px 0
+        margin: 1.3rem 0
         img
             display: table
             margin: 0 auto
@@ -174,6 +261,9 @@ html, body
         height: auto
         padding: 0
 
+.pagination
+    margin-top: 30px
+
 .site-footer
     width: 100%
     margin: 50px 0 0
@@ -182,8 +272,10 @@ html, body
     background: #4CA454
     color: white
     line-height: 1.5em
+
     a
         color: white
+
     blockquote
         margin: 0 0 20px
 
@@ -198,10 +290,12 @@ footer
     .side
         display: inline-block
         vertical-align: top
-        margin-right: 20px
         text-align: left
         &:nth-child(1)
             padding-right: 60px
+        &:nth-child(2)
+            text-align: right
+
     .site-info
         position: relative
         margin: 0px 40px -10px
@@ -251,9 +345,51 @@ footer
             right: 0
             margin: 0 -4px -4px 0
 
+$mobile-width: 400px
 $tablet-width: 768px
-$desktop-width: 1024px
+$desktop-width: 1088px
+
+@media (max-width: $desktop-width)
+    .site-header
+        padding: 40px
 
 @media (max-width: $tablet-width)
     .content-box
         padding: 20px 0 0
+
+    .box
+        padding: 20px 5px
+
+    .site-branding
+        margin: 0 40px
+
+    .site-header
+        text-align: center
+
+    .site-title
+        padding: 0 0 0.3em 0
+
+    #search-box
+        float: none
+        margin: 20px 0
+
+    #search-box input
+        width: auto
+
+    #site-navigation
+        margin: 0
+
+    .nav-item
+        width: 50%
+        display: inline-block
+
+        &:nth-child(5)
+            width: 100%
+
+    footer .side:nth-child(1)
+        padding-right: 20px
+
+@media (max-width: $mobile-width)
+    footer .side
+        display: block
+        padding: 0 !important

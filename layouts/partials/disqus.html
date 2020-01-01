@@ -1,5 +1,8 @@
 {{ if .Site.DisqusShortname }}
-    <div class="comments box">
-        {{ template "_internal/disqus.html" . }}
+    <div class="comments box" id="comments">
+        <a onclick="document.getElementById('comments-hidden').style.display='block';this.remove()">Show Comments</a>
+        <div id="comments-hidden" style="display: none">
+            {{ template "_internal/disqus.html" . }}
+        </div>
     </div>
 {{ end }}

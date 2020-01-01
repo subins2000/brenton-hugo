@@ -1,47 +1,57 @@
-<nav class="navbar is-fixed-top is-transparent">
-    <div class="container">
-        <div class="navbar-brand">
-            <button class="button navbar-burger" data-target="main-navbar">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+<div class="container">
+    <div class="content-wrapper site-header">
+        <div class="site-branding">
             {{ if isset .Site.Params "logo" }}
-                <div class="navbar-item">
-                    <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
-                        <img class="avatar-img" src="{{ .Site.BaseURL }}/{{ .Site.Params.logo }}" alt="{{ .Site.Title }}" />
-                    </a>
-                </div>
+                <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
+                    <img class="avatar-img" src="{{ .Site.BaseURL }}/{{ .Site.Params.logo }}" alt="{{ .Site.Title }}" />
+                </a>
             {{ else }}
-                <a class="navbar-item site-title" href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">{{ .Site.Title }}</a>
+                <div class="site-title">
+                    <a rel="home" href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">{{ .Site.Title }}</a>
+                </div>
+            {{ end }}
+            {{ if .Site.Params.subtitle }}
+                <p class="site-subtitle">{{ .Site.Params.subtitle }}</p>
             {{ end }}
         </div>
-
-        <div class="navbar-menu" id="main-navbar">
-            <div class="navbar-start">
-                {{if .Site.Params.subtitle}}
-                    <span class="navbar-item site-subheading">{{.Site.Params.subtitle}}</span>
-                {{end}}
-            </div>
-
-            <div class="navbar-end">
-                {{ range .Site.Menus.main.ByWeight }}
-                    {{ if .HasChildren }}
-                        <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link" href="{{ .URL }}">{{ .Name }}</a>
-                            <div class="navbar-dropdown is-boxed">
-                                {{ range .Children }}
-                                    <a class="navbar-item" href="{{ .URL }}">{{ .Name }}</a>
-                                {{ end }}
-                            </div>
-                        </div>
-                    {{ else }}
-                        <div class="navbar-item">
-                            <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
-                        </div>
-                    {{ end }}
-                {{ end }}
-            </div>
+        <div id="search-box">
+            <svg viewBox="0 0 100 100" id="search-toggle" style="display: inline-block;fill: #fff;vertical-align: middle;width: 30px;height: 30px;">
+                <use xlink:href="#shape-search"></use>
+            </svg>
+            <form id="search-form" action="/search">
+                <input type="search" name="q" class="search-field" value="">
+                <button type="submit">Search</button>
+            </form>
         </div>
     </div>
-</nav>
+    <nav>
+        <ul id="site-navigation">
+            {{ range .Site.Menus.main.ByWeight }}
+                {{ if .HasChildren }}
+                    <li class="nav-item">
+                        {{ if .URL }}
+                            <a href="{{ .URL }}">{{ .Name }}</a>
+                        {{ else }}
+                            <a title="{{ .Name }}">{{ .Name }}</a>
+                        {{ end }}
+                        <ul class="nav-submenu">
+                            {{ range .Children }}
+                                <li class="nav-subitem">
+                                    <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
+                                </li>
+                            {{ end }}
+                        </ul>
+                    </li>
+                {{ else }}
+                    <li class="nav-item">
+                        {{ if .URL }}
+                            <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
+                        {{ else }}
+                            <a title="{{ .Name }}">{{ .Name }}</a>
+                        {{ end }}
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    </nav>
+</div>
