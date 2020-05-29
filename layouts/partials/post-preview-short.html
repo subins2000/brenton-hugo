@@ -1,4 +1,4 @@
-<article class="post-preview is-black">
+<article class="post-preview is-black" style="border-bottom: 2px dashed #CCC;padding-top: 20px;">
     {{ if .Params.subtitle }}
         <h5 class="post-subtitle subtitle is-4">{{ .Params.subtitle }}</h5>
     {{ end }}
@@ -11,15 +11,13 @@
                 {{ range $index, $category := .Params.categories }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "categories/" | absLangURL }}{{ $category | urlize | lower }}" rel="category">{{ . | title }}</a>{{ end }}
             </span>
         {{- end -}}
-
-        {{- if .Params.tags -}}
-            <span class="post-nav-item">
-                {{ range $index, $category := .Params.tags }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "tags/" | absLangURL }}{{ $category | urlize | lower }}" rel="category">{{ . | title }}</a>{{ end }}
-            </span>
-        {{- end -}}
     </p>
-    <div class="post-title subtitle">
+    <div class="post-title subtitle is-size-4">
         <a href="{{ .Permalink }}">{{ .Title }}</a></p>
+        {{- if .Params.tags -}}
+        <span class="post-nav-item is-size-7">
+            {{ range $index, $tag := .Params.tags }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "tags/" | absLangURL }}{{ $tag | urlize | lower }}" rel="tag">{{ . | title }}</a>{{ end }}
+        </span>
+    {{- end -}}
     </div>
-    <br/>
 </article>
