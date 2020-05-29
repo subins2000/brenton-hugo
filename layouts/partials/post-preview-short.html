@@ -1,0 +1,25 @@
+<article class="post-preview is-black">
+    {{ if .Params.subtitle }}
+        <h5 class="post-subtitle subtitle is-4">{{ .Params.subtitle }}</h5>
+    {{ end }}
+
+    <p class="post-meta">
+        <span class="post-nav-item">{{ .Date.Format "2006 January 2" }}</span>
+
+        {{- if .Params.categories -}}
+            <span class="post-nav-item">
+                {{ range $index, $category := .Params.categories }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "categories/" | absLangURL }}{{ $category | urlize | lower }}" rel="category">{{ . | title }}</a>{{ end }}
+            </span>
+        {{- end -}}
+
+        {{- if .Params.tags -}}
+            <span class="post-nav-item">
+                {{ range $index, $category := .Params.tags }}{{ if gt $index 0 }}, {{ end }}<a href="{{ "tags/" | absLangURL }}{{ $category | urlize | lower }}" rel="category">{{ . | title }}</a>{{ end }}
+            </span>
+        {{- end -}}
+    </p>
+    <div class="post-title subtitle">
+        <a href="{{ .Permalink }}">{{ .Title }}</a></p>
+    </div>
+    <br/>
+</article>

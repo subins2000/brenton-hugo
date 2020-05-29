@@ -9,9 +9,9 @@
             <div class="columns">
                 <div id="primary" class="column is-two-thirds">
                     <div class="posts-list">
-                        {{ $pag := .Paginate (where .Site.RegularPages "Type" "post") }}
+                        {{ $pag := .Paginate (where .Site.RegularPages "Type" "post") 20 }}
                         {{ range $pag.Pages }}
-                        {{ partial "post-preview.html" . }}
+                        {{ partial "post-preview-short.html" . }}
                         {{ end }}
                     </div>
 
