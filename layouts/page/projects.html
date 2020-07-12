@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    {{ partial "head.html" . }}
+    <body>
+        {{ partial "nav.html" . }}
+        {{ partial "nav-secondary.html" . }}
+
+        <div class="container main" role="main">
+            <div class="single-post">
+                <section class="hero post-header is-light">
+                    <div class="hero-body">
+                        <h1 class="title post-title">Projects</h1>
+                        <div class="filters">
+                            <a class="button is-success">All</a>
+                            {{ range .Params.categories }}
+                                <a class="button is-dark filtercat" cat="{{ . }}">{{ . | title }}</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                </section>
+                <div class="content-box">
+                    <div class="projects">
+                        {{ range .Params.projects }}
+                            <div class="card project cat-{{ .cat }}">
+                                <div class="card-content">
+                                    <div class="media">
+                                        <div class="media-content">
+                                          <p class="title is-4">{{ .name }}</p>
+                                          <p class="subtitle is-6 filtercat" cat="{{ .cat }}">#{{ .cat }}</p>
+                                        </div>
+                                    </div>
+                                    <p class="content">{{ .desc }}</p>
+                                </div>
+                                <footer class="card-footer">
+                                    {{ range .links }}
+                                        <a href="{{ .url }}" class="card-footer-item">{{ .text }}</a>
+                                    {{ end }}
+                                </footer>
+                            </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .projects {
+            }
+            .project {
+                max-width: 33vw;
+                margin: 0 10px;
+            }
+        </style>
+        <script src="{{ .Site.BaseURL }}/js/isotope.pkgd.min.js" async="async"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                const iso = new Isotope('.projects', {
+                    itemSelector: '.project',
+                    layoutMode: 'fitRows'
+                })
+                for (const elem of document.getElementsByClassName('filtercat')) {
+                    elem.onclick = () => {
+                        console.log(elem.getAttribute('cat'))
+                        iso.arrange({ filter: '.cat-' + elem.getAttribute('cat') })
+                    }
+                }
+            }
+        </script>
+        {{ partial "footer.html" . }}
+    </body>
+</html>
