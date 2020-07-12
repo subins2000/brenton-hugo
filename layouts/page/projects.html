@@ -11,9 +11,9 @@
                     <div class="hero-body">
                         <h1 class="title post-title">Projects</h1>
                         <div class="filters">
-                            <a class="button is-success">All</a>
+                            <a class="button is-success filtercat" data-filter="*">All</a>
                             {{ range .Params.categories }}
-                                <a class="button is-dark filtercat" cat="{{ . }}">{{ . | title }}</a>
+                                <a class="button is-dark filtercat" data-filter=".cat-{{ . }}">{{ . | title }}</a>
                             {{ end }}
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                                     <div class="media">
                                         <div class="media-content">
                                           <p class="title is-4">{{ .name }}</p>
-                                          <p class="subtitle is-6 filtercat" cat="{{ .cat }}">#{{ .cat }}</p>
+                                          <p class="subtitle is-6 filtercat" data-filter=".cat-{{ .cat }}">#{{ .cat }}</p>
                                         </div>
                                     </div>
                                     <p class="content">{{ .desc }}</p>
@@ -57,10 +57,15 @@
                     itemSelector: '.project',
                     layoutMode: 'fitRows'
                 })
-                for (const elem of document.getElementsByClassName('filtercat')) {
+                const filters = document.getElementsByClassName('filtercat')
+                for (const elem of filters) {
                     elem.onclick = () => {
-                        console.log(elem.getAttribute('cat'))
-                        iso.arrange({ filter: '.cat-' + elem.getAttribute('cat') })
+                        iso.arrange({ filter: elem.getAttribute('data-filter') })
+
+                        for (const f of filters) {
+                            f.classList.remove('is-success')
+                        }
+                        elem.classList.add('is-success')
                     }
                 }
             }
