@@ -30,6 +30,13 @@
                     <div class="projects">
                         {{ range .Params.projects }}
                             <div class="card project {{ range .cat }} cat-{{ . }} {{ end }}">
+                                {{ if .img -}}
+                                    <div class="card-image">
+                                        <figure class="image is-{{ .imgsize }}">
+                                            <img src="{{ .img }}" alt="Placeholder image">
+                                        </figure>
+                                    </div>
+                                {{ end }}
                                 <div class="card-content">
                                     <div class="media">
                                         <div class="media-content">
