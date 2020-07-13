@@ -65,6 +65,7 @@
             .projects {
             }
             .project {
+                display: inline-block;
                 max-width: 33%;
                 margin: 0 10px;
             }
@@ -73,13 +74,23 @@
                 max-width: 200px;
                 margin: 0 auto;
             }
+            @media screen and (max-width: 1024px) {
+                .project {
+                    max-width: calc(50vw - 80px);
+                }
+            }
+            @media screen and (max-width: 769px) {
+                .project {
+                    max-width: 100%;
+                    margin-bottom: 20px;
+                }
+            }
         </style>
         <script src="{{ .Site.BaseURL }}/js/isotope.pkgd.min.js" async="async"></script>
         <script type="text/javascript">
             window.onload = function () {
                 const iso = new Isotope('.projects', {
-                    itemSelector: '.project',
-                    layoutMode: 'fitRows'
+                    itemSelector: '.project'
                 })
                 const filters = document.getElementsByClassName('filtercat')
                 for (const elem of filters) {
