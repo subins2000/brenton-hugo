@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </section>
-                <div class="content-box">
+                <div>
                     <div class="projects">
                         {{ range .Params.projects }}
                             <div class="card project {{ range .cat }} cat-{{ . }} {{ end }}">
@@ -72,7 +72,7 @@
             .project .image img {
                 max-height: 200px;
                 max-width: 200px;
-                margin: 10px auto 0;
+                margin: 20px auto 0;
             }
             @media screen and (max-width: 1024px) {
                 .project {
