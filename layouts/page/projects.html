@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    {{ partial "head.html" . }}
+    <body>
+        {{ partial "nav.html" . }}
+        {{ partial "nav-secondary.html" . }}
+
+        <div class="container main" role="main">
+            <div class="single-post">
+                <section class="hero post-header is-light">
+                    <div class="hero-body">
+                        <h1 class="title post-title">Projects</h1>
+                        <div id="post-meta" class="row">
+                            <div class="row-item">
+                                <span class="fa fa-clock-o"></span>
+                                {{ if not .Lastmod.IsZero -}}
+                                    <time datetime="{{ .Lastmod.Format "2006-01-02" }}" content="{{ .Lastmod.Format "2006-01-02" }}" itemprop="dateModified">Last Updated: {{ .Lastmod.Format "January 02, 2006" }}</time>
+                                {{- end -}}
+                            </div><br/>
+                            <div class="row-item filters">
+                                <a class="button is-success filtercat" data-filter="*">All</a>
+                                {{ range .Params.categories }}
+                                    <a class="button is-dark filtercat" data-filter=".cat-{{ . }}">{{ . | title }}</a>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div>
+                    <div class="projects">
+                        {{ range .Params.projects }}
+                            <div class="card project {{ range .cat }} cat-{{ . }} {{ end }}">
+                                {{ if .img -}}
+                                    <div class="card-image">
+                                        <figure class="image is-{{ .imgsize }}">
+                                            <img src="{{ .img }}" alt="Placeholder image">
+                                        </figure>
+                                    </div>
+                                {{ end }}
+                                <div class="card-content">
+                                    <div class="media">
+                                        <div class="media-content">
+                                            <p class="title is-4">{{ .name }}</p>
+                                            <p class="subtitle is-6">
+                                                {{ range .cat }}
+                                                    <a class="filtercat" data-filter=".cat-{{ . }}">#{{ . }}</a>
+                                                {{ end }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p class="content">{{ .desc | markdownify }}</p>
+                                </div>
+                                <footer class="card-footer">
+                                    {{ range .links }}
+                                        <a href="{{ .url }}" class="card-footer-item">{{ .text }}</a>
+                                    {{ end }}
+                                </footer>
+                            </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .projects {
+            }
+            .project {
+                display: inline-block;
+                max-width: calc(33.33% - 20px);
+                margin: 0 10px 20px;
+            }
+            .project .image img {
+                max-height: 200px;
+                max-width: 200px;
+                margin: 20px auto 0;
+            }
+            @media screen and (max-width: 1024px) {
+                .project {
+                    max-width: calc(50vw - 80px);
+                }
+            }
+            @media screen and (max-width: 769px) {
+                .project {
+                    max-width: 100%;
+                }
+            }
+        </style>
+        <script src="{{ .Site.BaseURL }}/js/isotope.pkgd.min.js" async="async"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                const iso = new Isotope('.projects', {
+                    itemSelector: '.project'
+                })
+                const filters = document.getElementsByClassName('filtercat')
+                for (const elem of filters) {
+                    elem.onclick = () => {
+                        iso.arrange({ filter: elem.getAttribute('data-filter') })
+
+                        for (const f of filters) {
+                            f.classList.remove('is-success')
+                        }
+                        elem.classList.add('is-success')
+                    }
+                }
+            }
+        </script>
+        {{ partial "footer.html" . }}
+    </body>
+</html>
