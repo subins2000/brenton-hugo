@@ -8,10 +8,10 @@
         <div class="container content-box main" role="main">
             <div class="columns">
                 <div id="primary" class="column is-two-thirds">
-                    <div class="posts-list">
-                        {{ $pag := .Paginate (where .Site.RegularPages "Type" "post") }}
+                    <div class="posts-list box">
+                        {{ $pag := .Paginate (where .Site.RegularPages "Type" "post") 20 }}
                         {{ range $pag.Pages }}
-                        {{ partial "post-preview.html" . }}
+                        {{ partial "post-preview-short.html" . }}
                         {{ end }}
                     </div>
 

@@ -1,19 +1,21 @@
-<nav class="pagination is-large box" role="navigation" aria-label="pagination">
-    <div class="is-centered">
-        <a class="pagination-previous" {{ if .PrevInSection }} href="{{ .PrevInSection.Permalink }}" title="{{ .PrevInSection.Title }}" {{ else }}disabled{{ end }}>Previous Post</a>
-        <div class="addthis_inline_share_toolbox"></div>
-        <a class="pagination-next" {{ if .NextInSection }} href="{{ .NextInSection.Permalink }}" {{ else }}disabled{{ end }}>Next Post</a>
-    </div>
+<nav class="pagination box" role="navigation" aria-label="pagination">
+    <div class="columns">
+        <div class="column is-one-third is-centered">
+            <a class="pagination-previous" {{ if .PrevInSection }} href="{{ .PrevInSection.Permalink }}" title="{{ .PrevInSection.Title }}" {{ else }}disabled{{ end }}>Previous Post</a>
+            <div class="addthis_inline_share_toolbox"></div>
+            <a class="pagination-next" {{ if .NextInSection }} href="{{ .NextInSection.Permalink }}" {{ else }}disabled{{ end }}>Next Post</a>
+        </div>
 
-    <div class="has-text-left">
-        {{ $related := .Site.RegularPages.Related . | first 5 }}
-        {{ with $related }}
-        <span>Related Stuff</span>
-        <ol>
-        	{{ range . }}
-        	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-        	{{ end }}
-        </ol>
-        {{ end }}
+        <div class="column has-text-left">
+            {{ $related := .Site.RegularPages.Related . | first 5 }}
+            {{ with $related }}
+            <span>Related Posts</span>
+            <ol>
+            	{{ range . }}
+            	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            	{{ end }}
+            </ol>
+            {{ end }}
+        </div>
     </div>
 </nav>

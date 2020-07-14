@@ -1,4 +1,4 @@
-@import '../../variables.sass'
+@import './variables.sass'
 
 html, body
     background: #000
@@ -68,16 +68,16 @@ a[href]:hover
 
 #search-box
     &:hover #search-toggle
-      fill: #4CA454
+      fill: $green
 
     input:focus
         #search-toggle
-            fill: #4CA454
+            fill: $green
 
-        border-bottom-color: #4CA454
+        border-bottom-color: $green
 
     &:target #search-box input
-        border-bottom-color: #4CA454
+        border-bottom-color: $green
 
 .shape-search
     width: 30px
@@ -119,19 +119,19 @@ a[href]:hover
         opacity: 1
 
     &:nth-child(1), &:nth-child(1) .nav-submenu
-        background: #4CA454
+        background: $green-dark
 
     &:nth-child(2), &:nth-child(2) .nav-submenu
-          background: #BE4C39
+          background: $red
 
     &:nth-child(3), &:nth-child(3) .nav-submenu
-          background: #d49b00
+          background: $yellow
 
     &:nth-child(4), &:nth-child(4) .nav-submenu
-          background: #6693D6
+          background: $blue
 
     &:nth-child(5), &:nth-child(5) .nav-submenu
-          background: #9351A6
+          background: $violet
 
     a
         position: static
@@ -243,6 +243,8 @@ a[href]:hover
     blockquote, pre, li
         p
             margin: 0
+    blockquote
+        background: #EEE
     table
         width: 100%
         border-top: 2px solid $primary
@@ -269,7 +271,7 @@ a[href]:hover
     margin: 50px 0 0
     padding: 30px 0 0
     font-size: 1em
-    background: #4CA454
+    background: $green
     color: white
     line-height: 1.5em
 
@@ -385,6 +387,12 @@ $desktop-width: 1088px
 
         &:nth-child(5)
             width: 100%
+
+    .single-post .post-title
+        font-size: 26px
+
+    .pagination
+        padding: 25px
 
     footer .side:nth-child(1)
         padding-right: 20px

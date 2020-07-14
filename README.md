@@ -30,3 +30,7 @@ while inotifywait -e close_write static/css/; do bash ./build.sh; done
 ```
 
 `inotify-tools` package is required for this (`sudo apt install inotify-tools`)
+
+### Gallery
+
+Image gallery made by [Li-Wen Yip](https://github.com/liwenyip/hugo-easy-gallery) is included in this theme.

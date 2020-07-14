@@ -1,6 +1,7 @@
+# Probably overriden by site's layouts
 {{ if .Site.DisqusShortname }}
     <div class="comments box" id="comments">
-        <a onclick="document.getElementById('comments-hidden').style.display='block';this.remove()">Show Comments</a>
+        <a onclick="document.getElementById('comments-hidden').style.display='block';this.remove()" class="button is-large is-primary" style="display: block;margin: 0 auto;">Show Comments</a>
         <div id="comments-hidden" style="display: none">
             {{ template "_internal/disqus.html" . }}
         </div>
