@@ -6,10 +6,10 @@
         {{ partial "nav-secondary.html" . }}
 
         <div class="container content-box main" role="main">
-            <div class="columns">
+            <div class="columns" id="main-columns">
                 <div id="primary" class="column is-two-thirds">
                     <div class="posts-list box">
-                        {{ $pag := .Paginate (where .Site.RegularPages "Type" "post") 20 }}
+                        {{ $pag := .Paginate (where .Site.RegularPages "Type" "post") 10 }}
                         {{ range $pag.Pages }}
                         {{ partial "post-preview-short.html" . }}
                         {{ end }}
